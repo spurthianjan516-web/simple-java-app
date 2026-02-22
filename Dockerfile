@@ -1,7 +1,9 @@
-FROM tomcat:9-jdk17
+FROM openjdk:17
 
-COPY target/*.war /usr/local/tomcat/webapps/app.war
+WORKDIR /app
 
-EXPOSE 8080
+COPY App.java .
 
-CMD ["catalina.sh","run"]
+RUN javac App.java
+
+CMD ["java", "App"]
